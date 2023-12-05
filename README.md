@@ -1,2 +1,3 @@
-# aoc-2023
-Solutions for Advent of Code 2023.
+# Advent of Code 2023
+
+My solutions for Advent of Code 2023. Mostly written in Rust.
