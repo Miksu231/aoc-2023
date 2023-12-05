@@ -1,4 +1,4 @@
-use std::{fs::read_to_string, mem::transmute, ops::Deref, borrow::BorrowMut};
+use std::fs::read_to_string;
 use regex::Regex;
 
 fn main() {
@@ -44,11 +44,8 @@ fn part_two(lines: &Vec<String>) -> i32 {
         (Regex::new(r"three").unwrap(), 4, '3'),
         ];
     let mut total_sum:i32 = 0;
-    let mut index = 0;
     for line in lines {
-        index+=1;
-        let mut usableline = line.to_string();
-        usableline = format!("{:a<60}", line);
+        let usableline = format!("{:a<60}", line);
         let mut line_nums: Vec<char> = ['\0', '\0'].to_vec();
         let inter = usableline.as_bytes();
         let mut windows = inter.windows(5);
@@ -78,7 +75,6 @@ fn part_two(lines: &Vec<String>) -> i32 {
         if line_nums[1] == '\0' {
             line_nums[1] = line_nums[0]
         }
-        println!("Line {}: {}, {}. Sum: {}", index, line_nums[0], line_nums[1], line_nums.iter().collect::<String>().parse::<i32>().unwrap());
         total_sum += (line_nums.iter().collect::<String>()).parse::<i32>().unwrap();
     }
     return total_sum;
